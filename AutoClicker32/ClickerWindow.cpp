@@ -6,6 +6,9 @@ ClickerWindow::ClickerWindow()
 	SetClassname(L"ClickerWindow");
 	SetTitle(L"AutoClicker32");
 
+	/* Font */
+	fntDefault = nullptr;
+
 	/* Checkbox */
 	cbLockPosition = nullptr;
 	cbFakeMovement = nullptr;
@@ -33,6 +36,10 @@ ClickerWindow::ClickerWindow()
 
 ClickerWindow::~ClickerWindow()
 {
+	/* Font */
+	if (fntDefault)
+		delete fntDefault;
+
 	/* Checkbox */
 	if (cbLockPosition)
 		delete cbLockPosition;
@@ -86,6 +93,11 @@ bool ClickerWindow::Initialize()
 	if (!Window::Initialize())
 		return false;
 
+	/* Font */
+	fntDefault = new Font();
+	fntDefault->SetName(L"Arial");
+	fntDefault->SetSize(9);
+
 	/* Checkbox */
 	cbLockPosition = new Checkbox();
 	cbLockPosition->SetParent(GetSelf());
@@ -93,6 +105,7 @@ bool ClickerWindow::Initialize()
 	cbLockPosition->SetSize(Vector2<int>(140, 20));
 	cbLockPosition->SetText(L"Lock Position");
 	cbLockPosition->SetCheck(ClickerLib::GetMousePositionLock());
+	cbLockPosition->SetFont(fntDefault);
 	cbLockPosition->Create();
 
 	cbFakeMovement = new Checkbox();
@@ -101,6 +114,7 @@ bool ClickerWindow::Initialize()
 	cbFakeMovement->SetSize(Vector2<int>(140, 20));
 	cbFakeMovement->SetText(L"Fake Movement");
 	cbFakeMovement->SetCheck(ClickerLib::GetFakeMouseMovement());
+	cbFakeMovement->SetFont(fntDefault);
 	cbFakeMovement->Create();
 
 	cbRandomizeDelay = new Checkbox();
@@ -109,6 +123,7 @@ bool ClickerWindow::Initialize()
 	cbRandomizeDelay->SetSize(Vector2<int>(140, 20));
 	cbRandomizeDelay->SetText(L"Randomize Delay");
 	cbRandomizeDelay->SetCheck(ClickerLib::GetDelayRandomizer());
+	cbRandomizeDelay->SetFont(fntDefault);
 	cbRandomizeDelay->Create();
 
 	cbApplicationLock = new Checkbox();
@@ -117,6 +132,7 @@ bool ClickerWindow::Initialize()
 	cbApplicationLock->SetSize(Vector2<int>(140, 20));
 	cbApplicationLock->SetText(L"Application Lock");
 	cbApplicationLock->SetCheck(ClickerLib::GetApplicationLock());
+	cbApplicationLock->SetFont(fntDefault);
 	cbApplicationLock->Create();
 
 	cbRemoveKeyFlag = new Checkbox();
@@ -125,6 +141,7 @@ bool ClickerWindow::Initialize()
 	cbRemoveKeyFlag->SetSize(Vector2<int>(140, 20));
 	cbRemoveKeyFlag->SetText(L"Remove Key Flag");
 	cbRemoveKeyFlag->SetCheck(ClickerLib::GetRemoveKeyFlag());
+	cbRemoveKeyFlag->SetFont(fntDefault);
 	cbRemoveKeyFlag->Create();
 
 	cbReleaseDelay = new Checkbox();
@@ -133,6 +150,7 @@ bool ClickerWindow::Initialize()
 	cbReleaseDelay->SetSize(Vector2<int>(140, 20));
 	cbReleaseDelay->SetText(L"Release Delay");
 	cbReleaseDelay->SetCheck(ClickerLib::GetReleaseDelay());
+	cbReleaseDelay->SetFont(fntDefault);
 	cbReleaseDelay->Create();
 
 	/* Text Box*/
@@ -144,6 +162,7 @@ bool ClickerWindow::Initialize()
 	tbInformation->SetVerticalScroll(true);
 	tbInformation->SetText(L"AutoClicker32 - Release N/A\nhttps://github.com/UnknownException/AutoClicker32");
 	tbInformation->SetReadOnly(true);
+	tbInformation->SetFont(fntDefault);
 	tbInformation->Create();
 
 	/* Combo Box */
@@ -165,6 +184,7 @@ bool ClickerWindow::Initialize()
 	}
 
 	cmbActionKey->SetSelection(0);
+	cmbActionKey->SetFont(fntDefault);
 	cmbActionKey->Create();
 
 	cmbEmergencyKey = new ComboBox();
@@ -184,6 +204,7 @@ bool ClickerWindow::Initialize()
 	}
 
 	cmbEmergencyKey->SetSelection(1);
+	cmbEmergencyKey->SetFont(fntDefault);
 	cmbEmergencyKey->Create();
 
 	/* Numeric Box */
@@ -222,6 +243,7 @@ bool ClickerWindow::Initialize()
 	tlWarning->SetSize(Vector2<int>(488, 24));
 	tlWarning->SetText(L"Open this application before the target application when using remove key flag");
 	tlWarning->SetSunken(true);
+	tlWarning->SetFont(fntDefault);
 	tlWarning->Create();
 
 	return true;

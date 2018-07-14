@@ -7,6 +7,8 @@
 #include "GUIComponents/TextLabel.h"
 
 class ClickerWindow : public Window{
+	Font* fntDefault;
+
 	Checkbox* cbLockPosition;
 	Checkbox* cbFakeMovement;
 	Checkbox* cbRandomizeDelay;
