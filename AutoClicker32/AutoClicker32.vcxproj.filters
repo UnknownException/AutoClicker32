@@ -30,6 +30,9 @@
     <ClInclude Include="GUIComponents\stdafx.h">
       <Filter>GUIComponents</Filter>
     </ClInclude>
+    <ClInclude Include="GUIComponents\Font.h">
+      <Filter>GUIComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoClicker32.cpp" />
@@ -54,6 +57,9 @@
       <Filter>GUIComponents</Filter>
     </ClCompile>
     <ClCompile Include="GUIComponents\Window.cpp">
+      <Filter>GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIComponents\Font.cpp">
       <Filter>GUIComponents</Filter>
     </ClCompile>
   </ItemGroup>

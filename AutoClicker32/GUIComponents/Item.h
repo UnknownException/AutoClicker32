@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Font.h"
 
 class Item {
 	HWND parent;
@@ -16,6 +17,9 @@ class Item {
 	bool border;
 	bool visible;
 	bool enabled;
+
+	Font* preFont;
+	HFONT fontInstance;
 public:
 	Item();
 	virtual ~Item();
@@ -51,6 +55,9 @@ public:
 
 	bool GetEnabled() { return enabled; }
 	void SetEnabled(bool b);
+
+	HFONT GetFont() { return fontInstance; }
+	void SetFont(Font* f);
 
 	bool IsSame(HWND hWnd) { return self == hWnd; }
 	bool Create() { return Create(NULL); }

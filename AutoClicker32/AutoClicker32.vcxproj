@@ -150,6 +150,7 @@
     <ClInclude Include="ClickerWindow.h" />
     <ClInclude Include="GUIComponents\Checkbox.h" />
     <ClInclude Include="GUIComponents\ComboBox.h" />
+    <ClInclude Include="GUIComponents\Font.h" />
     <ClInclude Include="GUIComponents\Item.h" />
     <ClInclude Include="GUIComponents\NumericBox.h" />
     <ClInclude Include="GUIComponents\stdafx.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="ClickerWindow.cpp" />
     <ClCompile Include="GUIComponents\Checkbox.cpp" />
     <ClCompile Include="GUIComponents\ComboBox.cpp" />
+    <ClCompile Include="GUIComponents\Font.cpp" />
     <ClCompile Include="GUIComponents\Item.cpp" />
     <ClCompile Include="GUIComponents\NumericBox.cpp" />
     <ClCompile Include="GUIComponents\TextBox.cpp" />
