@@ -212,7 +212,9 @@ bool ClickerWindow::Initialize()
 	nbDelay->SetParent(GetSelf());
 	nbDelay->SetPosition(Vector2<int>(4, 26));
 	nbDelay->SetSize(Vector2<int>(160, 24));
-//	nbDelay->SetText(L"20MS");
+	nbDelay->SetMin(5);
+	nbDelay->SetMax(2000);
+	nbDelay->SetSelection(ClickerLib::GetClickDelay());
 	nbDelay->Create();
 
 	/* Text Label */
@@ -220,7 +222,7 @@ bool ClickerWindow::Initialize()
 	tlDelay->SetParent(GetSelf());
 	tlDelay->SetPosition(Vector2<int>(4, 6));
 	tlDelay->SetSize(Vector2<int>(160, 20));
-	tlDelay->SetText(L"Delay");
+	tlDelay->SetText(L"Delay (ms)");
 	tlDelay->Create();
 
 	tlActionKey = new TextLabel();
@@ -345,7 +347,7 @@ LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam
 				{
 					HWND control = ((LPNMHDR)lParam)->hwndFrom;
 					if (nbDelay->IsSame(control))
-						HandleDelay();
+						HandleDelay(((LPNMUPDOWN)lParam)->iPos + ((LPNMUPDOWN)lParam)->iDelta);
 					else
 						break;
 
@@ -432,7 +434,14 @@ bool ClickerWindow::HandleEmergencyKey()
 	return true;
 }
 
-bool ClickerWindow::HandleDelay()
+bool ClickerWindow::HandleDelay(int delay)
 {
+	if (delay < nbDelay->GetMin())
+		delay = nbDelay->GetMin();
+	else if (delay > nbDelay->GetMax())
+		delay = nbDelay->GetMax();
+
+	ClickerLib::SetClickDelay(delay);
+
 	return true;
 }

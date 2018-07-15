@@ -40,5 +40,5 @@ protected:
 private:
 	bool HandleActionKey();
 	bool HandleEmergencyKey();
-	bool HandleDelay();
+	bool HandleDelay(int delay);
 };
