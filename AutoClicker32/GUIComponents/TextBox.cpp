@@ -12,6 +12,7 @@ TextBox::TextBox()
 	SetReadOnly(false);
 
 	text = nullptr;
+	textAlignment = ALIGNLEFT;
 }
 
 TextBox::~TextBox()
@@ -91,13 +92,20 @@ void TextBox::FocusBottom()
 
 bool TextBox::BeforeCreate()
 {
-	DWORD dwStyle = WS_VISIBLE | WS_CHILD | ES_LEFT | ES_AUTOVSCROLL;
+	DWORD dwStyle = WS_VISIBLE | WS_CHILD | ES_AUTOVSCROLL;
 	if (multiLine)
 		dwStyle |= ES_MULTILINE;
 	if (verticalScroll)
 		dwStyle |= WS_VSCROLL;
 	if (readOnly)
 		dwStyle |= ES_READONLY;
+
+	if (textAlignment == ALIGNCENTER)
+		dwStyle |= ES_CENTER;
+	else if (textAlignment == ALIGNRIGHT)
+		dwStyle |= ES_RIGHT;
+	else
+		dwStyle |= ES_LEFT;
 
 	SetStyle(dwStyle);
 

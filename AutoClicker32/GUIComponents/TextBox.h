@@ -2,10 +2,19 @@
 #include "Item.h"
 
 class TextBox : public Item {
+public:
+	enum TextAlignment {
+		ALIGNLEFT,
+		ALIGNCENTER,
+		ALIGNRIGHT
+	};
+
+private:
 	bool multiLine;
 	bool verticalScroll;
 	bool readOnly;
 	LPCWSTR text;
+	TextAlignment textAlignment;
 public:
 	TextBox();
 	virtual ~TextBox();
@@ -26,6 +35,9 @@ public:
 
 	bool GetReadOnly() { return readOnly; }
 	void SetReadOnly(bool b);
+
+	TextAlignment GetTextAlignment() { return textAlignment; }
+	void SetTextAlignment(TextAlignment ta) { textAlignment = ta; }
 
 	void FocusBottom();
 
