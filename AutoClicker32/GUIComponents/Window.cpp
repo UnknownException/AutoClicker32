@@ -51,7 +51,7 @@ bool Window::BeforeCreate()
 
 bool Window::AfterCreate()
 {
-	SetWindowLongPtr(GetSelf(), 0, (LONG)this);
+	SetWindowLongPtr(GetSelf(), 0, (LONG_PTR)this);
 
 	ShowWindow(GetSelf(), cmdShow);
 	UpdateWindow(GetSelf());

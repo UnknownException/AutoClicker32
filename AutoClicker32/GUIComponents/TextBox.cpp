@@ -65,7 +65,7 @@ void TextBox::AppendText(LPCWSTR string)
 {
 	LPCWSTR currentText = GetText();
 
-	int appendedLength = wcslen(currentText) + wcslen(string) + 1;
+	size_t appendedLength = wcslen(currentText) + wcslen(string) + 1;
 	WCHAR* appended = new WCHAR[appendedLength];
 	wcscpy_s(appended, appendedLength, currentText);
 	wcscat_s(appended, appendedLength, (WCHAR*)string);

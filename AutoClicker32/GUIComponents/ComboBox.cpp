@@ -42,7 +42,7 @@ void ComboBox::AddString(LPCWSTR string)
 int ComboBox::GetSelection()
 {
 	if (GetSelf())
-		return SendMessage(GetSelf(), CB_GETCURSEL, 0, 0);
+		return static_cast<int>(SendMessage(GetSelf(), CB_GETCURSEL, 0, 0));
 
 	return 0;
 }
@@ -58,9 +58,9 @@ void ComboBox::SetSelection(int index)
 int ComboBox::GetCount()
 {
 	if (GetSelf())
-		return SendMessage(GetSelf(), CB_GETCOUNT, 0, 0);
+		return static_cast<int>(SendMessage(GetSelf(), CB_GETCOUNT, 0, 0));
 	
-	return preStrings.size();
+	return static_cast<int>(preStrings.size());
 }
 
 bool ComboBox::BeforeCreate()
