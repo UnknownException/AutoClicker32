@@ -176,7 +176,7 @@ bool ClickerWindow::Initialize()
 	{
 		std::string keyName = (*it).keyName;
 		wchar_t* wStringBuffer = new wchar_t[keyName.length() + 1];
-		MultiByteToWideChar(CP_ACP, 0, keyName.c_str(), -1, wStringBuffer, keyName.length() + 1);
+		MultiByteToWideChar(CP_ACP, 0, keyName.c_str(), -1, wStringBuffer, static_cast<int>(keyName.length() + 1));
 
 		cmbActionKey->AddString(LPCWSTR(wStringBuffer));
 
@@ -196,7 +196,7 @@ bool ClickerWindow::Initialize()
 	{
 		std::string keyName = (*it).keyName;
 		wchar_t* wStringBuffer = new wchar_t[keyName.length() + 1];
-		MultiByteToWideChar(CP_ACP, 0, keyName.c_str(), -1, wStringBuffer, keyName.length() + 1);
+		MultiByteToWideChar(CP_ACP, 0, keyName.c_str(), -1, wStringBuffer, static_cast<int>(keyName.length() + 1));
 
 		cmbEmergencyKey->AddString(LPCWSTR(wStringBuffer));
 
@@ -262,7 +262,7 @@ bool ClickerWindow::Update()
 		tbInformation->AppendText(tbInformation->GetNewLine());
 
 		wchar_t* wStringBuffer = new wchar_t[(*it).length() + 1];
-		MultiByteToWideChar(CP_ACP, 0, (*it).c_str(), -1, wStringBuffer, (*it).length() + 1);
+		MultiByteToWideChar(CP_ACP, 0, (*it).c_str(), -1, wStringBuffer, static_cast<int>((*it).length() + 1));
 		tbInformation->AppendText(wStringBuffer);
 		delete[] wStringBuffer;
 
