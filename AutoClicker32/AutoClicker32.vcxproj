@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ClickerWindow.h" />
+    <ClInclude Include="GUIComponents\Button.h" />
     <ClInclude Include="GUIComponents\Checkbox.h" />
     <ClInclude Include="GUIComponents\ComboBox.h" />
     <ClInclude Include="GUIComponents\Font.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="AutoClicker32.cpp" />
     <ClCompile Include="ClickerWindow.cpp" />
+    <ClCompile Include="GUIComponents\Button.cpp" />
     <ClCompile Include="GUIComponents\Checkbox.cpp" />
     <ClCompile Include="GUIComponents\ComboBox.cpp" />
     <ClCompile Include="GUIComponents\Font.cpp" />
