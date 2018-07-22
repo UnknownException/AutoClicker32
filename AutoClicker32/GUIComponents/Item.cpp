@@ -21,19 +21,19 @@ Item::Item()
 
 Item::~Item()
 {
-	if (GetSelf())
+	if (self)
 		DestroyWindow(self);
 
-	if (GetClassname())
+	if (classname)
 		delete[] classname;
 
-	if (GetTitle())
+	if (title)
 		delete[] title;
 
 	if (preFont)
 		delete preFont;
 
-	if (GetFont())
+	if (fontInstance)
 		DeleteObject(fontInstance);
 }
 
@@ -42,9 +42,8 @@ void Item::SetClassname(LPCWSTR c)
 	if (classname)
 		delete[] classname;
 
-	WCHAR* output = new WCHAR[wcslen(c) + 1];
-	wcscpy_s(output, wcslen(c) + 1, c);
-	classname = output;
+	classname = new WCHAR[wcslen(c) + 1];
+	wcscpy_s(classname, wcslen(c) + 1, c);
 }
 
 void Item::SetTitle(LPCWSTR t) 
@@ -52,9 +51,8 @@ void Item::SetTitle(LPCWSTR t)
 	if (title)
 		delete[] title;
 
-	WCHAR* output = new WCHAR[wcslen(t) + 1];
-	wcscpy_s(output, wcslen(t) + 1, t);
-	title = output;
+	title = new WCHAR[wcslen(t) + 1];
+	wcscpy_s(title, wcslen(t) + 1, t);
 
 	if (GetSelf())
 		SetWindowText(GetSelf(), title);
@@ -121,6 +119,9 @@ bool Item::Create(HINSTANCE hInstance)
 	SetSelf(CreateWindowEx(GetBorder() ? WS_EX_CLIENTEDGE : NULL, GetClassname(), GetTitle(), GetStyle(),
 		GetPosition().x, GetPosition().y, GetSize().x, GetSize().y, GetParent(), NULL, hInstance, NULL));
 
+	if (!GetSelf())
+		return false;
+
 	SetVisible(GetVisible());
 	SetEnabled(GetEnabled());
 	SetFont(preFont);
@@ -128,7 +129,7 @@ bool Item::Create(HINSTANCE hInstance)
 	if (!AfterCreate())
 		return false;
 
-	return GetSelf() != nullptr;
+	return true;
 }
 
 bool Item::RegisterControls()

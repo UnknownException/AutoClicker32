@@ -36,8 +36,7 @@ bool Checkbox::BeforeCreate()
 
 bool Checkbox::AfterCreate()
 {
-	if (GetSelf())
-		SetCheck(preCheck);
+	SetCheck(preCheck);
 
 	return true;
 }

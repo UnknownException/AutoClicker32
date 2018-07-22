@@ -1,7 +1,7 @@
 #pragma once
 
 class Font {
-	WCHAR* name;
+	LPWSTR name;
 	int size;
 	bool bold;
 public:

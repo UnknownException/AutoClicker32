@@ -13,7 +13,7 @@ private:
 	bool multiLine;
 	bool verticalScroll;
 	bool readOnly;
-	LPCWSTR text;
+	LPWSTR text;
 	TextAlignment textAlignment;
 public:
 	TextBox();

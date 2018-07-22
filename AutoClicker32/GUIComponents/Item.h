@@ -6,8 +6,8 @@ class Item {
 	HWND parent;
 	HWND self;
 
-	WCHAR* classname;
-	WCHAR* title;
+	LPWSTR classname;
+	LPWSTR title;
 
 	DWORD style;
 

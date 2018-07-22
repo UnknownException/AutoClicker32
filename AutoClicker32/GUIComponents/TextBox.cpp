@@ -33,13 +33,12 @@ LPCWSTR TextBox::GetText()
 {
 	if (GetSelf())
 	{
-		int length = static_cast<int>(SendMessage(GetSelf(), WM_GETTEXTLENGTH, 0, 0)) + 1;
-
 		ClearText();
-		WCHAR* output = new WCHAR[length];
 
-		SendMessage(GetSelf(), WM_GETTEXT, length, (LPARAM)output);
-		text = output;
+		int length = static_cast<int>(SendMessage(GetSelf(), WM_GETTEXTLENGTH, 0, 0)) + 1;
+		text = new WCHAR[length];
+		SendMessage(GetSelf(), WM_GETTEXT, length, (LPARAM)text);
+
 	}
 
 	return text;
@@ -54,10 +53,9 @@ void TextBox::SetText(LPCWSTR string)
 	else
 	{
 		ClearText();
-		WCHAR* output = new WCHAR[wcslen(string) + 1];
 
-		wcscpy_s(output, wcslen(string) + 1, string);
-		text = output;
+		text = new WCHAR[wcslen(string) + 1];
+		wcscpy_s(text, wcslen(string) + 1, string);
 	}
 }
 

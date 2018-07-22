@@ -10,18 +10,17 @@ Font::Font()
 
 Font::~Font()
 {
-	if (GetName())
+	if (name)
 		delete[] name;
 }
 
 void Font::SetName(LPCWSTR font)
 {
-	if (GetName())
+	if (name)
 		delete[] name;
 
-	WCHAR* output = new WCHAR[wcslen(font) + 1];
-	wcscpy_s(output, wcslen(font) + 1, font);
-	name = output;
+	name = new WCHAR[wcslen(font) + 1];
+	wcscpy_s(name, wcslen(font) + 1, font);
 }
 
 HFONT Font::CreateInstance(HDC hDC)
