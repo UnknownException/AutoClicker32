@@ -223,6 +223,7 @@ bool ClickerWindow::Initialize()
 	tlDelay->SetPosition(Vector2<int>(4, 6));
 	tlDelay->SetSize(Vector2<int>(160, 20));
 	tlDelay->SetText(L"Delay (ms)");
+	tlDelay->SetTextAlignment(TextLabel::ALIGNCENTER);
 	tlDelay->Create();
 
 	tlActionKey = new TextLabel();
@@ -230,6 +231,7 @@ bool ClickerWindow::Initialize()
 	tlActionKey->SetPosition(Vector2<int>(168, 6));
 	tlActionKey->SetSize(Vector2<int>(160, 20));
 	tlActionKey->SetText(L"Action Key");
+	tlActionKey->SetTextAlignment(TextLabel::ALIGNCENTER);
 	tlActionKey->Create();
 
 	tlEmergencyKey = new TextLabel();
@@ -237,6 +239,7 @@ bool ClickerWindow::Initialize()
 	tlEmergencyKey->SetPosition(Vector2<int>(332, 6));
 	tlEmergencyKey->SetSize(Vector2<int>(160, 20));
 	tlEmergencyKey->SetText(L"Emergency Key");
+	tlEmergencyKey->SetTextAlignment(TextLabel::ALIGNCENTER);
 	tlEmergencyKey->Create();
 
 	tlWarning = new TextLabel();
@@ -244,6 +247,7 @@ bool ClickerWindow::Initialize()
 	tlWarning->SetPosition(Vector2<int>(4, 190));
 	tlWarning->SetSize(Vector2<int>(488, 24));
 	tlWarning->SetText(L"Open this application before the target application when using remove key flag");
+	tlWarning->SetTextAlignment(TextLabel::ALIGNCENTER);
 	tlWarning->SetSunken(true);
 	tlWarning->SetFont(fntDefault);
 	tlWarning->Create();
