@@ -23,32 +23,32 @@
     <ProjectGuid>{37BA462F-94CE-4C82-849D-0825761EA2E9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>AutoClicker32</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -148,37 +148,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ClickerWindow.h" />
-    <ClInclude Include="GUIComponents\Button.h" />
-    <ClInclude Include="GUIComponents\Checkbox.h" />
-    <ClInclude Include="GUIComponents\ComboBox.h" />
-    <ClInclude Include="GUIComponents\Font.h" />
-    <ClInclude Include="GUIComponents\Item.h" />
-    <ClInclude Include="GUIComponents\NumericBox.h" />
-    <ClInclude Include="GUIComponents\stdafx.h" />
-    <ClInclude Include="GUIComponents\TextBox.h" />
-    <ClInclude Include="GUIComponents\TextLabel.h" />
-    <ClInclude Include="GUIComponents\Vector2.h" />
-    <ClInclude Include="GUIComponents\Window.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoClicker32.cpp" />
     <ClCompile Include="ClickerWindow.cpp" />
-    <ClCompile Include="GUIComponents\Button.cpp" />
-    <ClCompile Include="GUIComponents\Checkbox.cpp" />
-    <ClCompile Include="GUIComponents\ComboBox.cpp" />
-    <ClCompile Include="GUIComponents\Font.cpp" />
-    <ClCompile Include="GUIComponents\Item.cpp" />
-    <ClCompile Include="GUIComponents\NumericBox.cpp" />
-    <ClCompile Include="GUIComponents\TextBox.cpp" />
-    <ClCompile Include="GUIComponents\TextLabel.cpp" />
-    <ClCompile Include="GUIComponents\Window.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClickerLib\ClickerLib.vcxproj">
+      <Project>{7098b050-73a2-40f5-8c24-addcd07172b5}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,10 +1,4 @@
 #pragma once
-#include "GUIComponents/Window.h"
-#include "GUIComponents/Checkbox.h"
-#include "GUIComponents/ComboBox.h"
-#include "GUIComponents/TextBox.h"
-#include "GUIComponents/NumericBox.h"
-#include "GUIComponents/TextLabel.h"
 
 class ClickerWindow : public Window{
 	Font* fntDefault;
@@ -35,7 +29,7 @@ public:
 	bool Update() override;
 
 protected:
-	LRESULT CALLBACK Procedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
+	virtual bool OnMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
 
 private:
 	bool HandleActionKey();

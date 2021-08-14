@@ -100,74 +100,85 @@ bool ClickerWindow::Initialize()
 
 	/* Checkbox */
 	cbLockPosition = new Checkbox();
-	cbLockPosition->SetParent(GetSelf());
 	cbLockPosition->SetPosition(Vector2<int>(4, 60));
 	cbLockPosition->SetSize(Vector2<int>(140, 20));
 	cbLockPosition->SetText(L"Lock Position");
 	cbLockPosition->SetCheck(ClickerLib::GetMousePositionLock());
 	cbLockPosition->SetFont(fntDefault);
-	cbLockPosition->Create();
+	cbLockPosition->OnClick = [](bool checked) {
+		ClickerLib::SetMousePositionLock(checked);
+	};
+	cbLockPosition->Create(this);
 
+	
 	cbFakeMovement = new Checkbox();
-	cbFakeMovement->SetParent(GetSelf());
 	cbFakeMovement->SetPosition(Vector2<int>(4, 80));
 	cbFakeMovement->SetSize(Vector2<int>(140, 20));
 	cbFakeMovement->SetText(L"Fake Movement");
 	cbFakeMovement->SetCheck(ClickerLib::GetFakeMouseMovement());
 	cbFakeMovement->SetFont(fntDefault);
-	cbFakeMovement->Create();
+	cbFakeMovement->OnClick = [](bool checked) {
+		ClickerLib::SetFakeMouseMovement(checked);
+	};
+	cbFakeMovement->Create(this);
 
 	cbRandomizeDelay = new Checkbox();
-	cbRandomizeDelay->SetParent(GetSelf());
 	cbRandomizeDelay->SetPosition(Vector2<int>(4, 100));
 	cbRandomizeDelay->SetSize(Vector2<int>(140, 20));
 	cbRandomizeDelay->SetText(L"Randomize Delay");
 	cbRandomizeDelay->SetCheck(ClickerLib::GetDelayRandomizer());
 	cbRandomizeDelay->SetFont(fntDefault);
-	cbRandomizeDelay->Create();
+	cbRandomizeDelay->OnClick = [](bool checked) {
+		ClickerLib::SetDelayRandomizer(checked);
+	};
+	cbRandomizeDelay->Create(this);
 
 	cbApplicationLock = new Checkbox();
-	cbApplicationLock->SetParent(GetSelf());
 	cbApplicationLock->SetPosition(Vector2<int>(4, 120));
 	cbApplicationLock->SetSize(Vector2<int>(140, 20));
 	cbApplicationLock->SetText(L"Application Lock");
 	cbApplicationLock->SetCheck(ClickerLib::GetApplicationLock());
 	cbApplicationLock->SetFont(fntDefault);
-	cbApplicationLock->Create();
+	cbApplicationLock->OnClick = [](bool checked) {
+		ClickerLib::SetApplicationLock(checked);
+	};
+	cbApplicationLock->Create(this);
 
 	cbRemoveKeyFlag = new Checkbox();
-	cbRemoveKeyFlag->SetParent(GetSelf());
 	cbRemoveKeyFlag->SetPosition(Vector2<int>(4, 140));
 	cbRemoveKeyFlag->SetSize(Vector2<int>(140, 20));
 	cbRemoveKeyFlag->SetText(L"Remove Key Flag");
 	cbRemoveKeyFlag->SetCheck(ClickerLib::GetRemoveKeyFlag());
 	cbRemoveKeyFlag->SetFont(fntDefault);
-	cbRemoveKeyFlag->Create();
+	cbRemoveKeyFlag->OnClick = [](bool checked) {
+		ClickerLib::SetRemoveKeyFlag(checked);
+	};
+	cbRemoveKeyFlag->Create(this);
 
 	cbReleaseDelay = new Checkbox();
-	cbReleaseDelay->SetParent(GetSelf());
 	cbReleaseDelay->SetPosition(Vector2<int>(4, 160));
 	cbReleaseDelay->SetSize(Vector2<int>(140, 20));
 	cbReleaseDelay->SetText(L"Release Delay");
 	cbReleaseDelay->SetCheck(ClickerLib::GetReleaseDelay());
 	cbReleaseDelay->SetFont(fntDefault);
-	cbReleaseDelay->Create();
+	cbReleaseDelay->OnClick = [](bool checked) {
+		ClickerLib::SetReleaseDelay(checked);
+	};
+	cbReleaseDelay->Create(this);
 
 	/* Text Box*/
 	tbInformation = new TextBox();
-	tbInformation->SetParent(GetSelf());
 	tbInformation->SetPosition(Vector2<int>(168, 60));
 	tbInformation->SetSize(Vector2<int>(324, 120));
 	tbInformation->SetMultiLine(true);
 	tbInformation->SetVerticalScroll(true);
-	tbInformation->SetText(L"AutoClicker32 - Release N/A\nhttps://github.com/UnknownException/AutoClicker32");
+	tbInformation->SetText(L"AutoClicker32 - " __DATE__ "\nhttps://github.com/UnknownException/AutoClicker32");
 	tbInformation->SetReadOnly(true);
 	tbInformation->SetFont(fntDefault);
-	tbInformation->Create();
+	tbInformation->Create(this);
 
 	/* Combo Box */
 	cmbActionKey = new ComboBox();
-	cmbActionKey->SetParent(GetSelf());
 	cmbActionKey->SetPosition(Vector2<int>(168, 26));
 	cmbActionKey->SetSize(Vector2<int>(160, 24));
 
@@ -185,10 +196,9 @@ bool ClickerWindow::Initialize()
 
 	cmbActionKey->SetSelection(0);
 	cmbActionKey->SetFont(fntDefault);
-	cmbActionKey->Create();
+	cmbActionKey->Create(this);
 
 	cmbEmergencyKey = new ComboBox();
-	cmbEmergencyKey->SetParent(GetSelf());
 	cmbEmergencyKey->SetPosition(Vector2<int>(332, 26));
 	cmbEmergencyKey->SetSize(Vector2<int>(160, 24));
 
@@ -205,52 +215,47 @@ bool ClickerWindow::Initialize()
 
 	cmbEmergencyKey->SetSelection(1);
 	cmbEmergencyKey->SetFont(fntDefault);
-	cmbEmergencyKey->Create();
+	cmbEmergencyKey->Create(this);
 
 	/* Numeric Box */
 	nbDelay = new NumericBox();
-	nbDelay->SetParent(GetSelf());
 	nbDelay->SetPosition(Vector2<int>(4, 26));
 	nbDelay->SetSize(Vector2<int>(160, 24));
 	nbDelay->SetMin(5);
 	nbDelay->SetMax(2000);
 	nbDelay->SetSelection(ClickerLib::GetClickDelay());
-	nbDelay->Create();
+	nbDelay->Create(this);
 
 	/* Text Label */
 	tlDelay = new TextLabel();
-	tlDelay->SetParent(GetSelf());
 	tlDelay->SetPosition(Vector2<int>(4, 6));
 	tlDelay->SetSize(Vector2<int>(160, 20));
 	tlDelay->SetText(L"Delay (ms)");
 	tlDelay->SetTextAlignment(TextLabel::ALIGNCENTER);
-	tlDelay->Create();
+	tlDelay->Create(this);
 
 	tlActionKey = new TextLabel();
-	tlActionKey->SetParent(GetSelf());
 	tlActionKey->SetPosition(Vector2<int>(168, 6));
 	tlActionKey->SetSize(Vector2<int>(160, 20));
 	tlActionKey->SetText(L"Action Key");
 	tlActionKey->SetTextAlignment(TextLabel::ALIGNCENTER);
-	tlActionKey->Create();
+	tlActionKey->Create(this);
 
 	tlEmergencyKey = new TextLabel();
-	tlEmergencyKey->SetParent(GetSelf());
 	tlEmergencyKey->SetPosition(Vector2<int>(332, 6));
 	tlEmergencyKey->SetSize(Vector2<int>(160, 20));
 	tlEmergencyKey->SetText(L"Emergency Key");
 	tlEmergencyKey->SetTextAlignment(TextLabel::ALIGNCENTER);
-	tlEmergencyKey->Create();
+	tlEmergencyKey->Create(this);
 
 	tlWarning = new TextLabel();
-	tlWarning->SetParent(GetSelf());
 	tlWarning->SetPosition(Vector2<int>(4, 190));
 	tlWarning->SetSize(Vector2<int>(488, 24));
 	tlWarning->SetText(L"Open this application before the target application when using remove key flag");
 	tlWarning->SetTextAlignment(TextLabel::ALIGNCENTER);
 	tlWarning->SetSunken(true);
 	tlWarning->SetFont(fntDefault);
-	tlWarning->Create();
+	tlWarning->Create(this);
 
 	return true;
 }
@@ -276,7 +281,7 @@ bool ClickerWindow::Update()
 	return true;
 }
 
-LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+bool ClickerWindow::OnMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
@@ -284,46 +289,6 @@ LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam
 		{
 			switch (HIWORD(wParam))
 			{
-				case BN_CLICKED:
-				{
-					HWND control = (HWND)lParam;
-					if (cbLockPosition->IsSame(control))
-					{
-						ClickerLib::SetMousePositionLock(!ClickerLib::GetMousePositionLock());
-						cbLockPosition->SetCheck(ClickerLib::GetMousePositionLock());
-					}
-					else if (cbFakeMovement->IsSame(control))
-					{
-						ClickerLib::SetFakeMouseMovement(!ClickerLib::GetFakeMouseMovement());
-						cbFakeMovement->SetCheck(ClickerLib::GetFakeMouseMovement());
-					}
-					else if (cbRandomizeDelay->IsSame(control))
-					{
-						ClickerLib::SetDelayRandomizer(!ClickerLib::GetDelayRandomizer());
-						cbRandomizeDelay->SetCheck(ClickerLib::GetDelayRandomizer());
-					}
-					else if (cbApplicationLock->IsSame(control))
-					{
-						ClickerLib::SetApplicationLock(!ClickerLib::GetApplicationLock());
-						cbApplicationLock->SetCheck(ClickerLib::GetApplicationLock());
-					}
-					else if (cbRemoveKeyFlag->IsSame(control))
-					{
-						ClickerLib::SetRemoveKeyFlag(!ClickerLib::GetRemoveKeyFlag());
-						cbRemoveKeyFlag->SetCheck(ClickerLib::GetRemoveKeyFlag());
-					}
-					else if (cbReleaseDelay->IsSame(control))
-					{
-						ClickerLib::SetReleaseDelay(!ClickerLib::GetReleaseDelay());
-						cbReleaseDelay->SetCheck(ClickerLib::GetReleaseDelay());
-					}
-					else
-					{
-						break;
-					}
-
-					return 0;
-				}
 				case CBN_SELENDOK:
 				{
 					HWND control = (HWND)lParam;
@@ -335,7 +300,7 @@ LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam
 					else
 						break;
 
-					return 0;
+					return true;
 
 				}
 				default:
@@ -355,7 +320,7 @@ LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam
 					else
 						break;
 
-					return 0;
+					return true;
 				}
 				default:
 					break;
@@ -369,15 +334,12 @@ LRESULT CALLBACK ClickerWindow::Procedure(HWND hWnd, UINT message, WPARAM wParam
 			// TODO: Add any drawing code that uses hdc here...
 			EndPaint(hWnd, &ps);
 
-			return 0;
+			return true;
 		}
 		break;
-		case WM_DESTROY:
-			PostQuitMessage(0);
-			return 0;
 	}
 
-	return DefWindowProc(hWnd, message, wParam, lParam);
+	return Window::OnMessage(hWnd, message, wParam, lParam);
 }
 
 bool ClickerWindow::HandleActionKey()
